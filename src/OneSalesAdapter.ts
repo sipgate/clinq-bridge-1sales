@@ -22,21 +22,22 @@ export class OneSalesAdapter implements Adapter {
 	}
 
 	public async updateContact(config: Config, id: string, contact: ContactUpdate) {
-		return {
-			id: '',
-			contactUrl: null,
-			avatarUrl: null,
-			name: null,
-			firstName: null,
-			lastName: null,
-			email: null,
-			organization: null,
-			phoneNumbers: []
-		};
+		const client = await this.getClient(config);
+
+		await client.put(
+				`leads/${id}`,
+				toCrmContact(contact)
+		);
+
+		return {...contact, avatarUrl: "", contactUrl: ""};
 	}
 
 	public async deleteContact(config: Config, id: string) {
-		throw new Error('not yet implemented');
+		const client = await this.getClient(config);
+
+		await client.delete(
+				`leads/${id}`
+		);
 	}
 
 	private getClient = async (config: Config) => {
