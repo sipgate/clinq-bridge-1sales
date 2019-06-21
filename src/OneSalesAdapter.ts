@@ -1,13 +1,18 @@
 import {Adapter, Config, ContactTemplate, ContactUpdate} from "@clinq/bridge";
 import axios from 'axios';
-import {toCrmContact} from "./ContactMapper";
+import {toCinqContacts, toCrmContact} from "./ContactMapper";
+import {IOneSalesContact} from "./model";
 
 const API_BASE_URL = 'https://api.1sales.io/api/v2/';
 
 export class OneSalesAdapter implements Adapter {
 
 	public async getContacts(config: Config) {
-		return [];
+		const client = await this.getClient(config);
+		const crmContacts : IOneSalesContact[] = await client.get(
+				"leads"
+		);
+		return toCinqContacts(crmContacts);
 	}
 
 	public async createContact(config: Config, contact: ContactTemplate) {
