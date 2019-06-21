@@ -57,4 +57,4 @@ export class OneSalesAdapter implements Adapter {
 
 		return axios.create({baseURL: API_BASE_URL, headers: { ... headers, authorization: 'bearer ' + token}});
 	};
-};
+}
