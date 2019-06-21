@@ -12,14 +12,8 @@ export class OneSalesAdapter implements Adapter {
 
 	public async createContact(config: Config, contact: ContactTemplate) {
 
-		const [email, password] = config.apiKey.split(":");
-
-		const {data: {token}} = await this.getClient().post(
-				"login",
-				{email, password}
-		);
-
-		const {data: {id}} = await this.getClient(token).post(
+		const client = await this.getClient(config);
+		const {data: {id}} = await client.post(
 				"leads",
 				toCrmContact(contact)
 		);
@@ -45,13 +39,16 @@ export class OneSalesAdapter implements Adapter {
 		throw new Error('not yet implemented');
 	}
 
-	private getClient = (bearer?: string) => {
+	private getClient = async (config: Config) => {
 		const headers: any = {'Content-Type': 'application/json', 'Accept': 'application/json'};
 
-		if (bearer) {
-			headers.authorization= 'bearer ' + bearer;
-		}
+		const [email, password] = config.apiKey.split(":");
 
-		return axios.create({baseURL: API_BASE_URL, headers});
+		const {data: {token}} = await axios.create({baseURL: API_BASE_URL, headers}).post(
+				"login",
+				{email, password}
+		);
+
+		return axios.create({baseURL: API_BASE_URL, headers: { ... headers, authorization: 'bearer ' + token}});
 	};
 };
