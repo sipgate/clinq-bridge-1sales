@@ -7,6 +7,9 @@ export function toCinqContacts(contacts: IOneSalesContact[]): Contact[] {
 		return [];
 	}
 
+	// tslint:disable-next-line
+	console.log(contacts);
+
 	return contacts.map(contact => {
 		const phoneNumbers = [];
 
@@ -23,10 +26,10 @@ export function toCinqContacts(contacts: IOneSalesContact[]): Contact[] {
 			avatarUrl: "",
 			contactUrl: "",
 			name: `${contact.firstName} ${contact.lastName}`,
-			firstName: contact.firstName,
-			lastName: contact.lastName,
-			email: contact.email,
-			organization: contact.company,
+			firstName: contact.firstName|| "",
+			lastName: contact.lastName|| "",
+			email: contact.email || "",
+			organization: contact.company|| "",
 			phoneNumbers
 		};
 	});
