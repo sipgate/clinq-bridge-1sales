@@ -2,6 +2,11 @@ import {Contact, ContactTemplate, PhoneNumberLabel} from "@clinq/bridge";
 import {IOneSalesContact} from "./model";
 
 export function toCinqContacts(contacts: IOneSalesContact[]): Contact[] {
+
+	if (!contacts || contacts.length === 0) {
+		return [];
+	}
+
 	return contacts.map(contact => {
 		const phoneNumbers = [];
 
