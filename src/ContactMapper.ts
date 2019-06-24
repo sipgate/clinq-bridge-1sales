@@ -7,15 +7,16 @@ export function toCinqContacts(contacts: IOneSalesContact[]): Contact[] {
 		return [];
 	}
 
+
 	return contacts.map(contact => {
 		const phoneNumbers = [];
 
 		if (contact.phone) {
-			phoneNumbers.push({phoneNumber: "", label: PhoneNumberLabel.WORK})
+			phoneNumbers.push({phoneNumber: contact.phone, label: PhoneNumberLabel.WORK})
 		}
 
 		if (contact.mobile) {
-			phoneNumbers.push({phoneNumber: "", label: PhoneNumberLabel.MOBILE})
+			phoneNumbers.push({phoneNumber: contact.mobile, label: PhoneNumberLabel.MOBILE})
 		}
 
 		return {
