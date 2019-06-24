@@ -7,9 +7,6 @@ export function toCinqContacts(contacts: IOneSalesContact[]): Contact[] {
 		return [];
 	}
 
-	// tslint:disable-next-line
-	console.log(contacts);
-
 	return contacts.map(contact => {
 		const phoneNumbers = [];
 
