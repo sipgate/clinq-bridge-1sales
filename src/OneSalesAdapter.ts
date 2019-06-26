@@ -9,7 +9,7 @@ export class OneSalesAdapter implements Adapter {
 	public async getContacts(config: Config) {
 		const client = await this.getClient(config);
 		const {data : crmContacts} = await client.get(
-				"leads"
+				"leads?pageSize=100000"
 		);
 		return toCinqContacts(crmContacts);
 	}
