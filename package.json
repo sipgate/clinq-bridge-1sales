@@ -17,7 +17,7 @@
 		"start": "ts-node-dev src/index.ts"
 	},
 	"dependencies": {
-		"@clinq/bridge": "^10.0.4",
+		"@clinq/bridge": "^10.1.2",
 		"axios": "^0.19.0",
 		"dotenv": "^8.0.0",
 		"express": "^4.17.1",
