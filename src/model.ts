@@ -1,9 +1,9 @@
 export interface IOneSalesContact {
-	"id"?: string;
-	"firstName": string;
-	"lastName": string;
-	"email": string;
-	"phone": string;
-	"mobile": string;
-	"company": string;
-};
+	readonly id?: string;
+	readonly firstName: string;
+	readonly lastName: string;
+	readonly email: string;
+	readonly phone: string;
+	readonly mobile: string;
+	readonly company: string;
+}
