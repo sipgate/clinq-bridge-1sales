@@ -5,9 +5,9 @@ dotenvConfig();
 const LOGIN_URL = process.env.LOGIN_URL;
 
 if (!LOGIN_URL) {
-	throw new Error("Missing APP_ID in environment");
+  throw new Error("Missing APP_ID in environment");
 }
 
 export const env = {
-	LOGIN_URL
+  LOGIN_URL,
 };
