@@ -44,6 +44,6 @@ spec:
               port: 8080
           env:
             - name: REDIS_URL
-              value: redis://clinq-cache-redis-master.redis.svc.cluster.local
+              value: rediss://10.37.248.211:6378
             - name: LOGIN_URL
               value: "https://api.1sales.io/api/v2/login"
